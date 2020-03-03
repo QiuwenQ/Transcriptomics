@@ -10,8 +10,8 @@ Change these variable values:
 - SteamReader parameter: for Program(InternalFragments).cs only (line 30), to specify the location of the text file
 
 Notes:
-- Comment out the modification section (line 33-40) when running the script for 21nt RNA
-- To run Program(InternalFragments).cs, rename Program.cs to Program(fragments).cs, and Program(InternalFragments).cs to Program.cs
+- Comment out the modification section (line 33-40) of Program.cs when running the script for 21nt RNA
+- To run Program(InternalFragments).cs, rename Program.cs to Program(fragments).cs and rename Program(InternalFragments).cs to Program.cs
 
 #### InternalFragMZ_21nt.txt
 - Text file contains calculated m/z of all possible internal fragments of the 21nt RNA. 
