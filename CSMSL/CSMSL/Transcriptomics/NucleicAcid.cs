@@ -33,7 +33,8 @@ namespace CSMSL.Transcriptomics
         /// <summary>
         /// The default chemical formula of the five prime (hydroxyl group)
         /// </summary>
-        public static readonly ChemicalFormula DefaultFivePrimeTerminus = new ChemicalFormula("O-3P-1");
+        public static readonly ChemicalFormula DefaultFivePrimeTerminus = new ChemicalFormula("O-3P-1"); //original
+        //public static readonly ChemicalFormula DefaultFivePrimeTerminus = new ChemicalFormula("H-1O-4P-1"); //for Martell DNA
 
         /// <summary>
         /// The default chemical formula of the three prime terminus (hydroxyl group)

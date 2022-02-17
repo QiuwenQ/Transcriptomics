@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Modifications>
   <Modification name="2'-Methylation">
     <ChemicalFormula>CH2</ChemicalFormula>
@@ -7,7 +7,14 @@
     <ModificationSite>G</ModificationSite>
     <ModificationSite>U</ModificationSite>
   </Modification>
-  
+
+
+
+  <Modification name="m22G">
+    <ChemicalFormula>C2H4</ChemicalFormula>
+    <ModificationSite>G</ModificationSite>
+  </Modification>
+
    <Modification name="weird">
     <ChemicalFormula>Fe-1</ChemicalFormula>
     <ModificationSite>A</ModificationSite>

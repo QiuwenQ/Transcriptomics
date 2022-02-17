@@ -39,6 +39,12 @@ namespace CSMSL.Transcriptomics
         public static Nucleotide GuanineBase { get; private set; }
         public static Nucleotide UracilBase { get; private set; }
 
+        //nucleotides for DNA: modified December 3, 2021
+        public static Nucleotide DeoxyAdenineBase { get; private set; } //For DNA
+        public static Nucleotide DeoxyCytosineBase { get; private set; } //For DNA
+        public static Nucleotide DeoxyGuanineBase { get; private set; } //For DNA
+        public static Nucleotide DeoxyThymineBase { get; private set; } //For DNA
+
         #endregion The Four Common RNA Bases
 
         private static readonly Dictionary<string, Nucleotide> Residues;
@@ -106,7 +112,11 @@ namespace CSMSL.Transcriptomics
             GuanineBase= AddResidue("Guanine", 'G', "Gua", "C5H4N5O1");
             UracilBase= AddResidue("Uracil", 'U', "Ura", "C4H3N2O2");
 
-
+            //DNA bases which have the same mass as the ones above, except the naming to deoxy is so we can evaluate if it is a DNA sequence and subtract the oxygen from the 3' end in line 143
+            DeoxyAdenineBase = AddResidue("DeoxyAdenine", 'B', "dAde", "C5H4N5");//for DNA
+            DeoxyCytosineBase = AddResidue("DeoxyCytosine", 'D', "dCyt", "C4H4N3O1");//for DNA
+            DeoxyGuanineBase = AddResidue("DeoxyGuanine", 'H', "dGua", "C5H4N5O1");//for DNA
+            DeoxyThymineBase = AddResidue("DeoxyThymine", 'V', "dThy", "C5H5N2O2");//for DNA
         }
 
         private static void AddResidueToDictionary(Nucleotide residue)
@@ -129,8 +139,17 @@ namespace CSMSL.Transcriptomics
             Letter = oneLetterAbbreviation;
             Symbol = threeLetterAbbreviation;
             ChemicalFormula = chemicalFormula;
-            //added: the sugarAndPhosphate and edited the calculation for monoisoptic mass
-            sugarAndPhosphate = new ChemicalFormula("C5H8O6P1");
+
+            if (Name.Equals("DeoxyAdenine")|| Name.Equals("DeoxyCytosine") || Name.Equals("DeoxyGuanine") || Name.Equals("DeoxyThymine"))
+            {
+                sugarAndPhosphate = new ChemicalFormula("C5H8O5P1"); //DNA sugar phosphate backbone (one less oxygen than the RNA one)
+            }
+            else
+            {
+                //added: the sugarAndPhosphate and edited the calculation for monoisoptic mass
+                sugarAndPhosphate = new ChemicalFormula("C5H8O6P1"); //RNA sugar phosphate backbone
+            }
+            
             MonoisotopicMass = ChemicalFormula.MonoisotopicMass+sugarAndPhosphate.MonoisotopicMass;
         }
 
